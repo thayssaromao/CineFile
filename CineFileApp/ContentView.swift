@@ -15,6 +15,7 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView {
             List {
+                Text("KKKKKK")
                 ForEach(items) { item in
                     NavigationLink {
                         Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
@@ -30,7 +31,7 @@ struct ContentView: View {
                 }
                 ToolbarItem {
                     Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                        Label("Add Item", systemImage: "minus")
                     }
                 }
             }
