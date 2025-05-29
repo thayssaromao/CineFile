@@ -12,12 +12,12 @@ struct LoginView: View {
         
         
         ZStack{
-            
+            Image("filme1")
             Text("LoginView")
         }
     }
 }
 
 #Preview {
-    
+    LoginView()
 }
