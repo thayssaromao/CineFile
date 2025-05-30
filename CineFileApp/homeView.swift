@@ -9,7 +9,7 @@ import SwiftUI
 
 struct homeView: View {
     
-    @State private var isLiked = false
+    @State var isLiked = false
     
     var body: some View {
         VStack (alignment: .center){
