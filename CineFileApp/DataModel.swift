@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+struct Film: Identifiable {
+    let id = UUID()
+    
+    let image: String
+    let title: String
+    let director: String
+    let description: String
+    let foto: String
+}
