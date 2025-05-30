@@ -23,7 +23,8 @@ struct LoginView: View {
             
             Spacer()
             
-        }
+        } .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(red: 0.0, green: 15/255, blue: 58/255))
        .onTapGesture { // Detecta qualquer toque na VStack
            withAnimation {
                
@@ -32,9 +33,8 @@ struct LoginView: View {
             
             
             
-        }.padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(red: 0.0, green: 15/255, blue: 58/255))
+        }
+           
         
         
             .sheet(isPresented: $isPresentingSignInView) {
@@ -42,7 +42,10 @@ struct LoginView: View {
                     .presentationDetents([
                         .height(550)
                     ])
-            }.presentationCornerRadius(nil)
+                    .ignoresSafeArea(.all)
+            }
+            .background(.clear)
+            .presentationCornerRadius(nil)
         
         
     }

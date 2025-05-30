@@ -1,3 +1,4 @@
+
 ////
 ////  SignInModal.swift
 ////  CineFileApp
@@ -8,9 +9,11 @@
 import SwiftUI
 
 struct SignInModal: View {
-    @State private var email = ""
-    @State private var password = ""
+    @State var email = ""
+    @State var password = ""
 
+    @State var emailIsShowing: Bool = false
+    
     var body: some View {
         
         ZStack{
@@ -24,30 +27,58 @@ struct SignInModal: View {
                 
               
                 VStack(spacing: 30){
-                    VStack(alignment: .leading){
-                        
-                        Text("E-mail: ")
-                        TextField("E-mail", text: $email)
-                            .keyboardType(.emailAddress)
-                            .autocapitalization(.none)
-                            .padding()
-                            .border(Color.gray.opacity(0.5))
-                            .cornerRadius(12)
-                        
-                    }
                     
-                    VStack(alignment: .leading){
-                        HStack{
-                            Text("Senha: ")
-                            Spacer()
-                            Text("Recuperar Senha")
-                                .foregroundStyle(Color.blue)
+                    ZStack(alignment: .trailing){
+                        VStack(alignment: .leading){
+                            
+                            Text("E-mail: ")
+                            TextField("E-mail", text: $email)
+                                .keyboardType(.emailAddress)
+                                .autocapitalization(.none)
+                                .padding()
+                                .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                                )
+                            
                         }
-                        SecureField("Senha", text: $password)
-                            .padding()
-                            .border(Color.gray.opacity(0.5))
-                            .cornerRadius(12)
+                        Image(systemName: emailIsShowing ? "eye.slash" : "eye")
+                            .padding(.top,27 )
+                            .padding(.horizontal,20 )
+
+                           .foregroundColor(.gray)
+                           .onTapGesture {
+                               emailIsShowing.toggle()
+                           }
+                    }
+
+                    ZStack(alignment: .trailing){
                         
+                        VStack(alignment: .leading){
+                            HStack{
+                                Text("Senha: ")
+                                Spacer()
+                                Text("Recuperar Senha")
+                                    .foregroundStyle(Color.blue)
+                            }
+                            SecureField("Senha", text: $password)
+                                .padding()
+                                .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                                )
+                            
+                           
+                        }
+                        
+                        Image(systemName: emailIsShowing ? "eye.slash" : "eye")
+                            .padding(.top,27 )
+                            .padding(.horizontal,20 )
+
+                           .foregroundColor(.gray)
+                           .onTapGesture {
+                               emailIsShowing.toggle()
+                           }
                     }
                     
                     
