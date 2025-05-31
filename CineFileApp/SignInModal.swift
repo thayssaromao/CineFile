@@ -29,6 +29,7 @@ struct SignInModal: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(60)
+                    .foregroundStyle(Color(red: 0.0, green: 15/255, blue: 58/255))
                 
                 
                 VStack(spacing: 30){
@@ -108,18 +109,14 @@ struct SignInModal: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
+                Spacer()
             
-                
             }
             .padding()
             .background(Color(red: 243/255, green: 243/255, blue: 244/255))
+            .background(.clear)
         
-        .background(.clear)
         
         
     }
 }
-
-//#Preview {
-//    SignInModal()
-//}
