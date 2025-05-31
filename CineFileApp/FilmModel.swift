@@ -8,6 +8,7 @@
 import Foundation
 
 struct DataModel{
+    
     let filmList: [Film] = [
         Film(image:"filme1", title: "Tudo em Todo o Lugar ao Mesmo Tempo", director: "Daniel Kwan, Daniel Scheinert", description: "Uma imigrante chinesa de meia idade se envolve em uma aventura louca, onde só ela pode salvar o mundo explorando outros universos que se conectam com as vidas que ela poderia ter levado", foto: "filme1capa" ),
         Film(image:"filme2", title: "Cisne Negro", director: "Darren Aronofsky", description: "Uma esforçada bailarina luta para manter sua sanidade após obter o papel principal no Lago dos Cisnes de Tchaikovsky.", foto: "filme2capa"),
