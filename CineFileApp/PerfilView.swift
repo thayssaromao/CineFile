@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PerfilView: View {
+    
+    let film = DataModel()
+    
     var body: some View {
         
         VStack(spacing: 32){
@@ -35,7 +38,7 @@ struct PerfilView: View {
                                .clipShape(Circle())
                        }
             
-                    VStack(alignment: .center, spacing: 15){
+                    VStack(alignment: .center, spacing: 10){
                         
                         Text("RATATA")
                             .font(.largeTitle)
@@ -45,7 +48,7 @@ struct PerfilView: View {
                             .font(.subheadline)
                             .fontWeight(.light)
                             .foregroundStyle(.white)
-                    }.padding(.bottom, 35)
+                    }.padding(.bottom, 30)
                     
 
                     VStack(alignment: .leading){
@@ -59,11 +62,51 @@ struct PerfilView: View {
                                 .background(Color(red: 29/255, green: 241/255, blue: 145/255))
                                 .cornerRadius(14)
                             Spacer()
+                                .padding(23)
                         }
-                        HStack{
+                        
+                        ScrollView(.horizontal){
+                            
+                            HStack(spacing:12){
+                                
+                                ForEach(film.filmList){film in
+                                    Image(film.image)
+                                        .resizable()
+                                        .frame(width: 100, height: 150)
+                                        .cornerRadius(9)
+                                }
+                            }.padding(.bottom,20)
                             
                         }
+                        HStack{
+                            Text("Assistidos")
+                                .padding(.horizontal,17)
+                                .foregroundStyle(Color.white)
+                                .padding(.vertical, 5)
+                                .font(.subheadline)
+                                .background(Color(red: 255/255, green: 92/255, blue: 146/255))
+                                .cornerRadius(14)
+                            Spacer()
+                                .padding(23)
+                        }
+                        
+                        
+                        ScrollView(.horizontal){
+                            HStack(spacing:12){
+                                
+                                ForEach(film.filmList){film in
+                                    Image(film.image)
+                                        .resizable()
+                                        .frame(width: 100, height: 150)
+                                        .cornerRadius(9)
+                                    
+                                }
+                            }.padding(.bottom,20)
+                        }
+                        
+                        
                     }.padding(.horizontal, 20)
+                    
                     Spacer()
                         
                 }

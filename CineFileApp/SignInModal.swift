@@ -9,14 +9,19 @@
 import SwiftUI
 
 struct SignInModal: View {
+    
+    @Binding var isLoggedIn: Bool
+    
+    @Environment(\.dismiss) var dismiss
+    
     @State var email = ""
     @State var password = ""
-    
     @State var emailIsShowing: Bool = false
+   
     
     var body: some View {
         
-        ZStack{
+     
             
             VStack{
                 
@@ -83,15 +88,16 @@ struct SignInModal: View {
                     
                     
                     Button("Fazer Login") {
-                        // Aqui você implementaria a lógica de login
-                        
-                        print("Tentativa de login com e-mail: \(email), senha: \(password)")
+                       
+                        isLoggedIn = true
+                        dismiss()
                     }
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(Color(red: 29/255, green: 241/255, blue: 145/255))
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                    
                     
                     Button("Criar uma Conta") {
                         // Aqui você implementaria a lógica de cadastro
@@ -102,16 +108,18 @@ struct SignInModal: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
+            
                 
             }
             .padding()
             .background(Color(red: 243/255, green: 243/255, blue: 244/255))
-        }
+        
         .background(.clear)
+        
         
     }
 }
 
-#Preview {
-    SignInModal()
-}
+//#Preview {
+//    SignInModal()
+//}
