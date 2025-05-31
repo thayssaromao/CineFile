@@ -22,14 +22,14 @@ struct LoginView: View {
                     isPresentingSignInView.toggle()
                 }
             }
-            // ✅ Chama o modal de login
+            
             .sheet(isPresented: $isPresentingSignInView) {
                 ZStack {
                     BackgroundClearView()
 
-                    // ✅ Passa binding de isLoggedIn
+                
                     SignInModal(isLoggedIn: $isLoggedIn)
-                        .presentationDetents([.height(550)])
+                        .presentationDetents([.height(580)])
                         .clipShape(
                             .rect(
                                 topLeadingRadius: 145,
@@ -42,7 +42,6 @@ struct LoginView: View {
                 .ignoresSafeArea()
                 .presentationCornerRadius(nil)
             }
-
 
             .navigationDestination(isPresented: $isLoggedIn) {
                 tabView()
