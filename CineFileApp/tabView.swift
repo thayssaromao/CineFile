@@ -114,7 +114,7 @@ struct tabView: View {
                         selectedTab = .profile
                     }
                 }
-                .padding(.horizontal, 15)
+                .padding(.horizontal, 20)
                 .padding(.vertical, 10) // Padding interno para a altura da cápsula
                 .background(
                     Color.white
@@ -141,7 +141,7 @@ struct TabBarButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: icon)
-                .font(.system(size: 20))
+                .font(.system(size: 25))
                 .foregroundColor(isSelected ? Color(red: 29/255, green: 241/255, blue: 145/255) : .black)
         }
     }
