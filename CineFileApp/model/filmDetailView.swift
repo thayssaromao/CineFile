@@ -71,15 +71,19 @@ struct filmDetailView: View {
                             .padding(.horizontal)
                             .padding(.vertical)
                         
-                        Button(action: {
-                            isViewed.toggle()
-                        }) {
-                            Image(systemName: isViewed ? "eye" : "eye.fill")
-                                .foregroundStyle(.white)
-                                .padding()
-                                .background(Color.blue)
-                                .clipShape(Circle())
-                        }
+                    Rectangle()
+                        .foregroundColor(.blue)
+                                                   .frame(width: 50, height: 30)
+                                                   .cornerRadius(15)
+                                                   .overlay(
+                                                       Button(action: {
+                                                           isViewed.toggle()
+                                                       }) {
+                                                           Image(systemName: isViewed ? "eye" : "eye.fill")
+                                                               .foregroundStyle(.white)
+                                                       }
+                                                   )
+                            
                     }
 
                 Spacer(minLength: 40)

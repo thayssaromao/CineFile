@@ -94,7 +94,8 @@ struct PerfilView: View {
                         ScrollView(.horizontal){
                             HStack(spacing:12){
                                 
-                                ForEach(film.filmList){film in
+                                ForEach(film.filmList.shuffled()) { film in
+
                                     Image(film.image)
                                         .resizable()
                                         .frame(width: 100, height: 150)

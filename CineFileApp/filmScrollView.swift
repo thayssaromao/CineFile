@@ -1,18 +1,29 @@
-//
-//  filmScrollView.swift
-//  CineFileApp
-//
-//  Created by Ana Luisa Luy on 01/06/25.
-//
-
 import SwiftUI
 
 struct filmScrollView: View {
+    let dataModel = DataModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(alignment:.center, spacing: 50) {
+                ForEach(dataModel.filmList) { film in
+                    FilmCardView(film: film)
+    
+                }
+                
+            }
+            .padding()
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(20)
+            .shadow(color: .blue.opacity(0.1), radius: 6, x: 0, y: 4)
+            
+        }
     }
+    
 }
 
 #Preview {
-    filmScrollView()
+    NavigationStack {
+        filmScrollView()
+    }
 }

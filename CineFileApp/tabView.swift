@@ -91,9 +91,9 @@ struct tabView: View {
             // Conteúdo baseado na aba selecionada
             switch selectedTab {
             case .home:
-                homeView()
+                ContentView()
             case .film:
-                filmDetailView(film: Film(image:"filme1", title: "Tudo em Todo o Lugar ao Mesmo Tempo", director: "Daniel Kwan, Daniel Scheinert", description: "Uma imigrante chinesa de meia idade se envolve em uma aventura louca, onde só ela pode salvar o mundo explorando outros universos que se conectam com as vidas que ela poderia ter levado", foto: "filme1capa"))
+                filmScrollView()
             case .profile:
                 PerfilView()
             }
@@ -120,7 +120,7 @@ struct tabView: View {
                     Color.white
                         .clipShape(Capsule())
                         .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
-                        .opacity(0.3) // Aumentei a opacidade para melhor visualização
+                        .opacity(0.5) // Aumentei a opacidade para melhor visualização
                 )
                 .padding(.horizontal, 40) // Este padding horizontal define o "recuo" da borda da tela.
                                           // QUANTO MAIOR ESTE VALOR, MAIS ESTREITA E CENTRALIZADA FICARÁ A CÁPSULA.
@@ -142,7 +142,7 @@ struct TabBarButton: View {
         Button(action: action) {
             Image(systemName: icon)
                 .font(.system(size: 20))
-                .foregroundColor(isSelected ? Color(red: 29/255, green: 241/255, blue: 145/255) : .gray)
+                .foregroundColor(isSelected ? Color(red: 29/255, green: 241/255, blue: 145/255) : .black)
         }
     }
 }
