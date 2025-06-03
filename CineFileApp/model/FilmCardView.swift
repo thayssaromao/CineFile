@@ -40,23 +40,56 @@ struct FilmCardView: View {
                         Text(film.director)
                             .foregroundStyle(.secondary)
                         
-                        Button(action: {
-                            isLiked.toggle()
-                        }) {
-                            Image(systemName: isLiked ? "heart.fill" : "heart")
-                                .foregroundStyle(.white)
-                                .padding()
-                                .background(Color.pink)
-                                .clipShape(Circle())
-                        }
-                    }
-                    Spacer()
                         
+                    }.padding(20)
+                    
+                    Spacer()
+                    
                     
                 }
                 .padding(.horizontal, 20)
+                .padding(.vertical, )
                 
-                
+                HStack(spacing:20){
+                    
+                    
+                    Button(action: {
+                        isViewed.toggle()
+                    }) {
+                        
+                        HStack(spacing:10){
+                            
+                            Image(systemName: isViewed ? "eye" : "eye.slash.fill")
+                            Text("Assistido")
+                            
+                            
+                        }  .padding(.horizontal,30)
+                            .padding(.vertical, 10)
+                            .foregroundStyle(.white)
+                            .background((isViewed ? .gray : .blue))
+                            .cornerRadius(10)
+                    }
+
+                    Button(action: {
+                        isLiked.toggle()
+                    }) {
+                        
+                        
+                        HStack(spacing:10){
+                            
+                            Image(systemName: isLiked ? "heart.fill" : "heart")
+                            Text("Favorito")
+                            
+                            
+                        }.padding(.horizontal,30)
+                            .padding(.vertical, 10)
+                            .foregroundStyle(.white)
+                            .background(isLiked ? .gray : Color(red: 255, green: 105/255, blue: 180/255))
+                            .cornerRadius(10)
+                    }
+                    
+                    
+                }
                 
                 VStack(alignment:.center){
                     Text(film.description)
@@ -64,21 +97,13 @@ struct FilmCardView: View {
                         .padding(.vertical, 10)
                         .padding(.horizontal, 20)
                     
-                    Rectangle()
-                        .foregroundColor(.blue)
-                                                   .frame(width: 50, height: 30)
-                                                   .cornerRadius(15)
-                                                   .overlay(
-                                                       Button(action: {
-                                                           isViewed.toggle()
-                                                       }) {
-                                                           Image(systemName: isViewed ? "eye" : "eye.fill")
-                                                               .foregroundStyle(.white)
-                                                       }
-                                                   )
-                                                   .padding(.vertical, 20)
-                }
+                    
+                }.padding(.bottom,20)
                 
+                
+                Image(systemName: "chevron.down")
+                    .font(.title)
+                    .padding(.bottom,20)
             }
             .background(Color.white)
             
