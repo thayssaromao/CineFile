@@ -29,6 +29,7 @@ struct LoginView: View {
 
                 
                     SignInModal(isLoggedIn: $isLoggedIn)
+                    
                         .presentationDetents([.height(580)])
                         .clipShape(
                             .rect(
@@ -41,6 +42,7 @@ struct LoginView: View {
                 }
                 .ignoresSafeArea()
                 .presentationCornerRadius(nil)
+                
             }
 
             .navigationDestination(isPresented: $isLoggedIn) {

@@ -117,6 +117,6 @@ struct SignInModal: View {
             .background(.clear)
         
         
-        
+            
     }
 }
