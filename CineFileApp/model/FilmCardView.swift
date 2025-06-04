@@ -22,34 +22,43 @@ struct FilmCardView: View {
                         ]),
                         startPoint: .top,
                         endPoint: .bottom
-                    )
-                }
+                    ).ignoresSafeArea()
+                    
+                    
+                    
+                    VStack{
+                        
+                        HStack{
+                            
+                            Image(film.image)
+                                .resizable()
+                                .frame(width: 120, height: 180)
+                                .cornerRadius(15)
+                            
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text(film.title)
+                                    .font(.title3)
+                                    .bold()
+                                    .fixedSize(horizontal: false, vertical: true)
+                                
+                                Text(film.director)
+                                    .foregroundStyle(.secondary)
+                                
+                                
+                            }.padding(20)
+                            
+                            
+                            
+                            
+                        }.padding(.horizontal, 20)
+                        
+                        
+                    }
+                    .offset(x:0, y: 75)
+                    
+                }.padding(.bottom, 30)
                 
-                HStack(alignment: .top){
-                    Image(film.image)
-                        .resizable()
-                        .frame(width: 120, height: 180)
-                        .cornerRadius(15)
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(film.title)
-                            .font(.title3)
-                            .bold()
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Text(film.director)
-                            .foregroundStyle(.secondary)
-                        
-                        
-                    }.padding(20)
-                    
-                    Spacer()
-                    
-                    
-                }
-                .padding(.horizontal, 20)
-                .padding(.vertical, )
-                
+                Spacer()
                 HStack(spacing:20){
                     
                     
@@ -66,10 +75,10 @@ struct FilmCardView: View {
                         }  .padding(.horizontal,30)
                             .padding(.vertical, 10)
                             .foregroundStyle(.white)
-                            .background((isViewed ? .gray : .blue))
+                            .background((isViewed ? .blue:.gray))
                             .cornerRadius(10)
                     }
-
+                    
                     Button(action: {
                         isLiked.toggle()
                     }) {
@@ -84,12 +93,13 @@ struct FilmCardView: View {
                         }.padding(.horizontal,30)
                             .padding(.vertical, 10)
                             .foregroundStyle(.white)
-                            .background(isLiked ? .gray : Color(red: 255, green: 105/255, blue: 180/255))
+                            .background(isLiked ?Color(red: 255, green: 105/255, blue: 180/255): .gray )
                             .cornerRadius(10)
                     }
                     
                     
                 }
+                Spacer()
                 
                 VStack(alignment:.center){
                     Text(film.description)
@@ -98,12 +108,12 @@ struct FilmCardView: View {
                         .padding(.horizontal, 20)
                     
                     
-                }.padding(.bottom,20)
+                }.padding(.vertical,20)
                 
                 
                 Image(systemName: "chevron.down")
                     .font(.title)
-                    .padding(.bottom,20)
+                    .padding(.vertical,20)
             }
             .background(Color.white)
             
