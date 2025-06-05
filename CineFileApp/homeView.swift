@@ -9,9 +9,12 @@ struct homeView: View {
     let dataModel = DataModel()
     
     var body: some View {
+        
+        
         VStack(alignment: .center) {
             
             ZStack(alignment: .top) {
+                
                 Image("logo cine horizontal")
                 
                 Image("tiras")
@@ -107,7 +110,7 @@ struct homeView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             
             
-        }.padding(.bottom, 60)
+        }.padding(.bottom, 90)
     }
 }
 

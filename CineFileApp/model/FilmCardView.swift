@@ -93,7 +93,7 @@ struct FilmCardView: View {
                         }.padding(.horizontal,30)
                             .padding(.vertical, 10)
                             .foregroundStyle(.white)
-                            .background(isLiked ?Color(red: 255, green: 105/255, blue: 180/255): .gray )
+                            .background(isLiked ?Color(red: 255, green: 92/255, blue: 146/255): .gray )
                             .cornerRadius(10)
                     }
                     

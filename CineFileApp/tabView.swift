@@ -16,6 +16,7 @@ struct tabView: View {
                 ContentView()
             case .search:
                 SearchView()
+                    .navigationBarBackButtonHidden(true)
             case .film:
                 filmScrollView()
             case .profile:

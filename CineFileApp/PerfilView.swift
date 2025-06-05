@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct PerfilView: View {
+    @State private var selectedFilm: Film? = nil
+    let dataModel = DataModel()
     
-    let film = DataModel()
     
     var body: some View {
         
@@ -35,7 +36,7 @@ struct PerfilView: View {
                                .scaledToFill()
                                .frame(width: 135, height: 135)
                                .clipShape(Circle())
-                       }
+                    }.padding(.top, -30)
             
                     VStack(alignment: .center){
                         
@@ -47,7 +48,8 @@ struct PerfilView: View {
                             .font(.subheadline)
                             .fontWeight(.light)
                             .foregroundStyle(.white)
-                    }.padding(.bottom, 20)
+                    }.padding(.vertical, -1)
+                        .padding(.bottom, 5)
                     
 
                     VStack(alignment: .leading){
@@ -64,19 +66,22 @@ struct PerfilView: View {
                                 .padding(20)
                         }
                         
-                        ScrollView(.horizontal){
-                            
-                            HStack(spacing:12){
+                        ScrollView(.horizontal) {
+                            HStack(spacing:10) {
                                 
-                                ForEach(film.filmList){film in
-                                    Image(film.image)
-                                        .resizable()
-                                        .frame(width: 90, height: 140)
-                                        .cornerRadius(9)
+                                ForEach(dataModel.filmList) { film in
+                                    
+                                    filmCapaView(film: film)
+                                        .onTapGesture {
+                                            
+                                            selectedFilm = film
+                                        }
                                 }
-                            }.padding(.bottom,25)
+                            }
+                            .padding(.horizontal, 15)
                             
                         }
+                        
                         HStack{
                             Text("Assistidos")
                                 .padding(.horizontal,17)
@@ -93,12 +98,13 @@ struct PerfilView: View {
                         ScrollView(.horizontal){
                             HStack(spacing:12){
                                 
-                                ForEach(film.filmList.shuffled()) { film in
+                                ForEach(dataModel.filmList.shuffled()) { film in
 
-                                    Image(film.image)
-                                        .resizable()
-                                        .frame(width: 90, height: 140)
-                                        .cornerRadius(9)
+                                    filmCapaView(film: film)
+                                        .onTapGesture {
+                                            
+                                            selectedFilm = film
+                                        }
                                     
                                 }
                             }
@@ -108,12 +114,21 @@ struct PerfilView: View {
                     }.padding(.horizontal, 20)
                     
                     Spacer()
+                    
                         
                 }
                 
                 }         .navigationBarBackButtonHidden(true)
 
+                .sheet(item: $selectedFilm) { film in
+                    filmDetailView(film: film)
+                    BackgroundClearView()
                         
+                        .presentationDetents([.height(890)])
+                        .frame(maxHeight: .infinity, alignment: .top)
+                    
+                    
+                }
             
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(red: 0.0, green: 15/255, blue: 58/255))
